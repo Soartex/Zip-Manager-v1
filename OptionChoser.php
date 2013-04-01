@@ -47,6 +47,13 @@ if(!$_SESSION['logged']){
 							  <option></option>
 							</select>
 							</br>
+							<span class="help-block">Patcher Config</span>
+							<select name="patcherConfig" class="fullWidth">
+							  <option>http://soartex.net/texture-patcher/data/config.json</option>
+							  <option>http://soartex.net/texture-patcher/data/archives/config(1.4.7).json</option>
+							  <option>http://soartex.net/texture-patcher/data/archives/config(1.2.5).json</option>
+							</select>
+							</br>
 							<span class="help-block">Local File Server Location of Mod Directory</span>
 							<select name="zipDirectory" class="fullWidth">
 							  <option>mods/</option>

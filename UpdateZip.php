@@ -30,7 +30,10 @@ if(!isset($_GET['fileName'])){
 			<small>
 			<?php echo $_GET['fileName'] ?>
 			</small>
-			<a class="btn pull-right" href="ZipManager.php">Back</a> 
+			<div class="btn-group pull-right">
+			    <a class="btn" href=<?php echo "jsoneditor?url=".$_SESSION['patcherConfig'];?>>Update Config</a>
+			    <a class="btn" href="ZipManager.php">Back</a> 
+		    </div>
 			</h1> 
 		</div>
 		<!--create temp location-->

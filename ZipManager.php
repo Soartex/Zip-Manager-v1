@@ -15,6 +15,7 @@ if(!$_SESSION['logged']){
 		<!-- Stylesheets -->
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.min.css" />
+		
 	</head>
 <div class="container">
 	<body>
@@ -24,7 +25,10 @@ if(!$_SESSION['logged']){
 		    <h1>
 		    Zip Archives Manger
 		    <small>Currently in Development</small>
-		    <a class="btn pull-right" href="OptionChoser.php">Back</a> 
+		    <div class="btn-group pull-right">
+			    <a class="btn" href=<?php echo "jsoneditor?url=".$_SESSION['patcherConfig'];?>>Update Config</a>
+			    <a class="btn" href="OptionChoser.php">Back</a> 
+		    </div>
 		</div>
 		<div class="alert alert-info">
 		    <strong>Current Zip Manager Options</strong></br>
@@ -33,6 +37,7 @@ if(!$_SESSION['logged']){
 			echo "[Github Repo]: ".$_SESSION['gitRepo']."</br>";
 			echo "[Github Branch]: ".$_SESSION['gitBranch']."</br>";		
 			echo "[Github Directory]: ".$_SESSION['gitDirectory']."</br>";
+			echo "[Patcher Config]: ".$_SESSION['patcherConfig']."</br>";
 			echo "[Local Zip Directory]: ".$_SESSION['zipDirectory']."</br>";
 			?>
 		</div>
