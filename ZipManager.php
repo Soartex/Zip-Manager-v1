@@ -27,6 +27,7 @@ if(!$_SESSION['logged']){
 		    <small>Currently in Development</small>
 		    <div class="btn-group pull-right">
 			    <a class="btn" href=<?php echo "jsoneditor?url=".$_SESSION['patcherConfig'];?>>Update Config</a>
+			    <a class="btn" href="">Packs</a> 
 			    <a class="btn" href="OptionChoser.php">Back</a> 
 		    </div>
 		</div>
