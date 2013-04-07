@@ -60,9 +60,14 @@ if(!isset($_GET['fileName'])){
 		$apiUrl='https://api.github.com/repos/' . $_SESSION['gitUsername'] . '/' . $_SESSION['gitRepo'] . '/git/trees/'.$_SESSION['gitBranch'].'?recursive=1';
 		echo "</br>Main API Tree: ".$apiUrl;
 		//get data
-		$contents = file_get_contents($apiUrl);
-		$contentD = utf8_encode($contents);
-		$githubRead = json_decode($contentD, true);
+		//$contents = file_get_contents($apiUrl);
+		//$contentD = utf8_encode($contents);
+		//$githubRead = json_decode($contentD, true);
+		
+		$handle = fopen($apiUrl, "rb");
+		$json = stream_get_contents($handle);
+		fclose($handle);
+		$githubRead = json_decode($json, true);
 		
 		//if no github data skip everything.
 		if($githubRead!==null){
