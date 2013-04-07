@@ -63,11 +63,22 @@ if(!isset($_GET['fileName'])){
 		//$contents = file_get_contents($apiUrl);
 		//$contentD = utf8_encode($contents);
 		//$githubRead = json_decode($contentD, true);
-		
-		$handle = fopen($apiUrl, "rb");
-		$json = stream_get_contents($handle);
-		fclose($handle);
-		$githubRead = json_decode($json, true);
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, $apiUrl);
+		echo "Test 1";
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		echo "Test 2";
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+		echo "Test 3";
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
+		echo "Test 4";
+		//curl_setopt($curl, CONNECTTIMEOUT, 1);
+		$content = curl_exec($curl);
+		echo "Test 5";
+		curl_close($curl);
+		echo $content;
+		$githubRead = json_decode($content, true);
+
 		
 		//if no github data skip everything.
 		if($githubRead!==null){
