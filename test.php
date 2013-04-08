@@ -14,7 +14,7 @@ echo '<p>'.$url.'</p>';
 
 $jsonData = file_get_contents($url);
 
-print '<p>', var_dump($jsonData), '</p>';
+print '<p>'. var_dump($jsonData). '</p>';
 
 # Output information about allow_url_fopen:
 if (ini_get('allow_url_fopen') == 1) {
