@@ -1,8 +1,6 @@
 <html>
     <head>        
         <title>Test File</title>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">
-        </script>
     </head>
     <body>
 <?php
