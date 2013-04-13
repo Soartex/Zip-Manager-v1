@@ -69,10 +69,6 @@ if(!isset($_GET['fileName'])){
 			if($githubRead===null){
 				throw new Exception('Unable to get JSON data from github.'); 
 			}
-			//if github data is default stop everything
-			if($githubRead["message"]!==null){
-				throw new Exception('Unable to get CONTENT data from github.'); 
-			}
 			echo '<div class="alert alert-success">Success: Downloaded Content Data From Github </div>';
 			?>
 			
@@ -84,6 +80,10 @@ if(!isset($_GET['fileName'])){
 			</br>
 			
 			<?php
+			//if github data is default stop everything
+			if($githubRead["message"]!==null){
+				throw new Exception('Unable to get CONTENT data from github.'); 
+			}
 			//seperate all files that have the correct path
 			foreach($githubRead["tree"] as &$file) {
 				if (strpos($file['path'],$_SESSION['gitDirectory'].$fileNoExt) !== false && $file['type']!="tree") {

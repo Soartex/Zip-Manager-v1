@@ -43,13 +43,12 @@ if(!$_SESSION['logged']){
 			?>
 		</div>
 		<hr>
-		<table class="table table-striped">
+		<table class="table table-hover">
 			<thead>
 			<tr>
 				<th>File Name</th>
 				<th>Date Modified</th>
-				<th>Download</th>
-				<th>Update</th>
+				<th>Options</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -73,9 +72,12 @@ if(!$_SESSION['logged']){
 					<tr>
 					  <td><?php echo $temp; ?></td>
 					  <td><?php echo date("m-d-Y H:i:s", filemtime($_SESSION['zipDirectory'].$temp)); ?></td>
-					  <td><a class="btn btn-mini" href="<?php echo $_SESSION['zipDirectory'].$temp; ?>"><?php echo $temp; ?></a></td>
 					  <td>
-						<a class="btn btn-mini" href=<?php echo "UpdateZip.php?fileName=".$temp; ?>>Update Zip</a>
+					  	<div class="btn-group">
+							<a class="btn btn-mini btn-success" href=<?php echo "UpdateZip.php?fileName=".$temp; ?>>Update Zip</a>
+							<a class="btn btn-mini btn-danger" href=<?php echo ""; ?>><i class="icon-trash icon-white"></i> Delete</a>
+							<a class="btn btn-mini" href="<?php echo $_SESSION['zipDirectory'].$temp; ?>"><?php echo $temp; ?></a>
+						</div>
 					  </td>
 					</tr>
 				<?php
@@ -83,6 +85,14 @@ if(!$_SESSION['logged']){
 				?>
 			</tbody>
 		</table>
+		
+		<!--Form for adding a new zip-->
+		<form action="" method="post">
+			<div class="form-horizontal">
+				<input type="text" placeholder="Filename.zip">
+				<button class="btn btn-success" type="submit" name="newzip">Add Zip File</button>
+			</div>
+		</form>
 	</div>
 	</body>
 	<footer>
