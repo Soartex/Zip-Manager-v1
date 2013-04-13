@@ -14,8 +14,7 @@ if(!$_SESSION['logged']){
 		<link rel="shortcut icon" href="assets/img/favicon.ico"/>
 		<!-- Stylesheets -->
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.min.css" />
-		
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.min.css" />		
 	</head>
 <div class="container">
 	<body>
@@ -75,7 +74,7 @@ if(!$_SESSION['logged']){
 					  <td>
 					  	<div class="btn-group">
 							<a class="btn btn-mini btn-success" href=<?php echo "UpdateZip.php?fileName=".$temp; ?>>Update Zip</a>
-							<a class="btn btn-mini btn-danger" href=<?php echo ""; ?>><i class="icon-trash icon-white"></i> Delete</a>
+							<a class="btn btn-mini btn-danger alertBox" filename=<?php echo $temp; ?> href="#"><i class="icon-trash icon-white"></i> Delete</a>
 							<a class="btn btn-mini" href="<?php echo $_SESSION['zipDirectory'].$temp; ?>"><?php echo $temp; ?></a>
 						</div>
 					  </td>
@@ -94,6 +93,21 @@ if(!$_SESSION['logged']){
 			</div>
 		</form>
 	</div>
+	
+	 <!-- JS dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootbox.min.js"></script>
+	<script>
+        $(document).on("click", ".alertBox", function(e) {
+            bootbox.confirm("Do you want to delete this zip file?", function(result) {
+				if(result === true){
+					//redirect to a good place.
+				}				
+			}); 
+        });
+    </script>
+    
 	</body>
 	<footer>
 		</br>
