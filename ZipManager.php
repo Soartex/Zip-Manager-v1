@@ -74,7 +74,7 @@ if(!$_SESSION['logged']){
 					  <td>
 					  	<div class="btn-group">
 							<a class="btn btn-mini btn-success" href=<?php echo "UpdateZip.php?fileName=".$temp; ?>>Update Zip</a>
-							<a class="btn btn-mini btn-danger alertBox" filename=<?php echo $temp; ?> href="#"><i class="icon-trash icon-white"></i> Delete</a>
+							<a class="btn btn-mini btn-danger" onclick="deleteClicked('<?php echo $temp?>')" href="#"><i class="icon-trash icon-white"></i> Delete</a>
 							<a class="btn btn-mini" href="<?php echo $_SESSION['zipDirectory'].$temp; ?>"><?php echo $temp; ?></a>
 						</div>
 					  </td>
@@ -99,13 +99,15 @@ if(!$_SESSION['logged']){
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootbox.min.js"></script>
 	<script>
-        $(document).on("click", ".alertBox", function(e) {
-            bootbox.confirm("Do you want to delete this zip file?", function(result) {
+		//function for delete popup
+		function deleteClicked(arg0) {
+			bootbox.confirm("Do you want to delete this zip file?", function(result) {
 				if(result === true){
-					//redirect to a good place.
+					//redirect to worker
+					window.location = "assets/Worker.php?fileName="+arg0;
 				}				
 			}); 
-        });
+		}
     </script>
     
 	</body>
