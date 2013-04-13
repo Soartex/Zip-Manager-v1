@@ -60,43 +60,9 @@ if(!isset($_GET['fileName'])){
 		$apiUrl='https://api.github.com/repos/' . $_SESSION['gitUsername'] . '/' . $_SESSION['gitRepo'] . '/git/trees/'.$_SESSION['gitBranch'].'?recursive=1';
 		echo "</br>Main API Tree: ".$apiUrl;
 		//get data
-		//$contents = file_get_contents($apiUrl);
-		//$contentD = utf8_encode($contents);
-		//$githubRead = json_decode($contentD, true);
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, $apiUrl);
-		echo "Test 1";
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		echo "Test 2";
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-		echo "Test 3";
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
-		echo "Test 4";
-		curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 5.1; rv:12.0) Gecko/20100101 Firefox/12.0');
-		//curl_setopt($curl, CONNECTTIMEOUT, 1);
-		$content = curl_exec($curl);
-		echo "Test 5";
-		curl_close($curl);
-		echo $content;
-		$githubRead = json_decode($content, true);
-
-		//test
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, 'http://www.google.com');
-		echo "Test 1";
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		echo "Test 2";
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-		echo "Test 3";
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
-		echo "Test 4";
-		curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 5.1; rv:12.0) Gecko/20100101 Firefox/12.0');
-		//curl_setopt($curl, CONNECTTIMEOUT, 1);
-		$content = curl_exec($curl);
-		echo "Test 5";
-		curl_close($curl);
-		echo "Google:".$content;
-		
+		$contents = file_get_contents($apiUrl);
+		$contentD = utf8_encode($contents);
+		$githubRead = json_decode($contentD, true);
 		
 		//if no github data skip everything.
 		if($githubRead!==null){
