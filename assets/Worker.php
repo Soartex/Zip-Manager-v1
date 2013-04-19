@@ -8,11 +8,15 @@ if(!$_SESSION['logged']){
 if(!isset($_GET['fileName'])){
 	    header("Location: ZipManager.php"); 
     exit; 
+}
+if(!isset($_GET['type'])){
+	    header("Location: ZipManager.php"); 
+    exit; 
 }?>
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Updater: <?php echo $_GET['fileName'] ?></title>
+		<title>Worker: <?php echo $_GET['fileName'] ?></title>
 		<meta charset="UTF-8"/>
 		<link rel="shortcut icon" href="img/favicon.ico"/>
 		<!-- Stylesheets -->
@@ -36,15 +40,26 @@ if(!isset($_GET['fileName'])){
 				</h1> 
 			</div>
 			<?php
-			//file path
-			$outputFile = "../".$_SESSION['zipDirectory'].$_GET['fileName'];
-			echo "File to delete: ".$outputFile."</br></br>";
-			//remove old zip
-			if (file_exists($outputFile)) {
-				echo '<div class="alert alert-success">Success: Deleted Old Archive</div>';
-				unlink($outputFile);
-			}else{
-				echo '<div class="alert alert-error">Error: Unable to delete file</div>';
+			if($_GET['type']==="delete"){
+				//file path
+				$outputFile = "../".$_SESSION['zipDirectory'].$_GET['fileName'];
+				echo "File to delete: ".$outputFile."</br></br>";
+				//remove old zip
+				if (file_exists($outputFile)) {
+					echo '<div class="alert alert-success">Success: Deleted Old Archive</div>';
+					if(is_dir($outputFile)){
+						rrmdir($outputFile);
+					}
+					else{
+						unlink($outputFile);
+					}
+				}
+				else{
+					echo '<div class="alert alert-error">Error: Unable to delete file</div>';
+				}
+			}
+			if($_GET['type']==="add"){
+				
 			}
 			?>
 		</div>
@@ -58,3 +73,22 @@ if(!isset($_GET['fileName'])){
    	</footer>
 </div>
 </html>
+
+<?php
+//remove recusivly everything in a directory
+function rrmdir($dir) {
+	if (is_dir($dir)) {
+		$objects = scandir($dir);
+		foreach ($objects as &$object) {
+			if ($object != "." && $object != "..") {
+				if (filetype($dir . "/" . $object) == "dir")
+					rrmdir($dir . "/" . $object);
+				else
+					unlink($dir . "/" . $object);
+			}
+		}
+		reset($objects);
+		rmdir($dir);
+	}
+}
+?>
