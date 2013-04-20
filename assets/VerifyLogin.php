@@ -5,6 +5,7 @@ if(isset($_POST['submit'])){
         session_start(); 
 		$_SESSION['logged'] = TRUE; 
 		$_SESSION['username'] = $_POST['username']; 
+		$_SESSION['profile'] = $_POST['profile'];
 
 		
         header("Location: ../OptionChoser.php"); // Modify to go to the page you would like 

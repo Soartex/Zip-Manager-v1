@@ -18,6 +18,12 @@
 						<form action="assets/VerifyLogin.php" method="post">
 							<input class="fullWidth" type="text" name="username" placeholder="Username">
 							<input class="fullWidth" type="password" name="password" placeholder="Password">
+							<select class="fullWidth" name="profile" >
+							  <option>Soartex 1.5.x</option>
+							  <option>Soartex 1.4.x</option>
+							  <option>Soartex 1.2.5</option>
+							  <option>Custom</option>
+							</select>
 							</br>
 							<button class="btn btn-success fullWidth" type="submit" name="submit">
 								Sign in

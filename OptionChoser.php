@@ -28,37 +28,119 @@ if(!$_SESSION['logged']){
 						<form action="assets/UpdateSession.php" method="post">
 							<span class="help-block">Github Username</span>
 							<select name="gitUsername" class="fullWidth">
-							  <option>Soartex-Fanver</option>
+								<?php
+								if($_SESSION['profile']!=="Custom"){
+									echo 
+									'<optgroup label="Profile">
+							  			<option>Soartex-Fanver</option>
+							  		</optgroup>';
+								}
+								?>
+								<optgroup label="All">
+							  		<option>Soartex-Fanver</option>
+							  	</optgroup>
 							</select>
 							</br>
 							<span class="help-block">Github Repository</span>
 							<select name="gitRepo" class="fullWidth">
-							  <option>Soartex-Textures</option>
+								<?php
+								if($_SESSION['profile']!=="Custom"){
+									echo 
+									'<optgroup label="Profile">
+							  			<option>Soartex-Textures</option>
+							  		</optgroup>';
+								}
+								?>
+								<optgroup label="All">
+							  		<option>Soartex-Textures</option>
+							  	</optgroup>
 							</select>
 							</br>
 							<span class="help-block">Repository Branch</span>
 							<select name="gitBranch" class="fullWidth">
-							  <option>master</option>
-							  <option>1.4.x</option>
+								<?php
+								if($_SESSION['profile']==="Soartex 1.5.x"){
+									echo 
+									'<optgroup label="Profile">
+							  			<option>master</option>
+							  		</optgroup>';
+								}
+								if($_SESSION['profile']==="Soartex 1.4.x"){
+									echo 
+									'<optgroup label="Profile">
+							  			<option>1.4.x</option>
+							  		</optgroup>';
+								}
+								?>
+								<optgroup label="All">
+							  		<option>master</option>
+							  		<option>1.4.x</option>
+							  	</optgroup>
 							</select>
 							</br>
 							<span class="help-block">Github Directory to Mod Folders</span>
 							<select name="gitDirectory" class="fullWidth">
-							  <option></option>
+								<optgroup label="All">
+							  		<option></option>
+							  	</optgroup>
 							</select>
 							</br>
 							<span class="help-block">Patcher Config</span>
 							<select name="patcherConfig" class="fullWidth">
-							  <option>http://soartex.net/texture-patcher/data/config.json</option>
-							  <option>http://soartex.net/texture-patcher/data/archives/config(1.4.7).json</option>
-							  <option>http://soartex.net/texture-patcher/data/archives/config(1.2.5).json</option>
+								<?php
+								if($_SESSION['profile']==="Soartex 1.5.x"){
+									echo 
+									'<optgroup label="Profile">
+							  			<option>http://soartex.net/texture-patcher/data/config.json</option>
+							  		</optgroup>';
+								}
+								if($_SESSION['profile']==="Soartex 1.4.x"){
+									echo 
+									'<optgroup label="Profile">
+							  			<option>http://soartex.net/texture-patcher/data/archives/config(1.4.7).json</option>
+							  		</optgroup>';
+								}
+								if($_SESSION['profile']==="Soartex 1.2.5"){
+									echo 
+									'<optgroup label="Profile">
+							  			<option>http://soartex.net/texture-patcher/data/archives/config(1.2.5).json</option>
+							  		</optgroup>';
+								}
+								?>
+							  <optgroup label="All">
+							  		<option>http://soartex.net/texture-patcher/data/config.json</option>
+								  	<option>http://soartex.net/texture-patcher/data/archives/config(1.4.7).json</option>
+								  	<option>http://soartex.net/texture-patcher/data/archives/config(1.2.5).json</option>
+							  </optgroup>
 							</select>
 							</br>
 							<span class="help-block">Local File Server Location of Mod Directory</span>
 							<select name="zipDirectory" class="fullWidth">
-							  <option>mods/</option>
-							  <option>archives/MC 1.4.7/mods/</option>
-							  <option>archives/MC 1.2.5/</option>
+								<?php
+								if($_SESSION['profile']==="Soartex 1.5.x"){
+									echo 
+									'<optgroup label="Profile">
+							  			<option>mods/</option>
+							  		</optgroup>';
+								}
+								if($_SESSION['profile']==="Soartex 1.4.x"){
+									echo 
+									'<optgroup label="Profile">
+							  			<option>archives/MC 1.4.7/mods/</option>
+							  		</optgroup>';
+								}
+								if($_SESSION['profile']==="Soartex 1.2.5"){
+									echo 
+									'<optgroup label="Profile">
+							  			<option>archives/MC 1.2.5/</option>
+							  		</optgroup>';
+								}
+								?>
+								<optgroup label="All">
+								  	<option>mods/</option>
+								  	<option>archives/MC 1.4.7/mods/</option>
+								  	<option>archives/MC 1.2.5/</option>
+								</optgroup>
 							</select>
 							</br>
 							<button class="btn btn-success fullWidth" type="submit" name="submit">
