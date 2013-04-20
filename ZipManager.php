@@ -86,10 +86,10 @@ if(!$_SESSION['logged']){
 		</table>
 		
 		<!--Form for adding a new zip-->
-		<form action="assets/Worker.php" method="post">
+		<form action="assets/AddFile.php" method="post">
 			<div class="form-horizontal">
-				<input type="text" placeholder="Filename.zip">
-				<button class="btn btn-success" type="submit" name="newzip">Add Zip File</button>
+				<input type="text" name="newzip" placeholder="Filename.zip">
+				<button class="btn btn-success" type="submit" name="newzipButton">Add Zip File</button>
 			</div>
 		</form>
 	</div>
@@ -104,7 +104,7 @@ if(!$_SESSION['logged']){
 			bootbox.confirm("Do you want to delete this: <b>/"+arg0+"</b>", function(result) {
 				if(result === true){
 					//redirect to worker
-					window.location = "assets/Worker.php?type=delete&fileName="+arg0;
+					window.location = "assets/DeleteFile.php?fileName="+arg0;
 				}				
 			}); 
 		}

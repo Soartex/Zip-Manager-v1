@@ -2,15 +2,11 @@
 //check user login
 session_start(); 
 if(!$_SESSION['logged']){ 
-    header("Location: index.php"); 
+    header("Location: ../index.php"); 
     exit; 
 } 
 if(!isset($_GET['fileName'])){
-	    header("Location: ZipManager.php"); 
-    exit; 
-}
-if(!isset($_GET['type'])){
-	    header("Location: ZipManager.php"); 
+	    header("Location: ../ZipManager.php"); 
     exit; 
 }?>
 <!DOCTYPE HTML>
@@ -40,26 +36,21 @@ if(!isset($_GET['type'])){
 				</h1> 
 			</div>
 			<?php
-			if($_GET['type']==="delete"){
-				//file path
-				$outputFile = "../".$_SESSION['zipDirectory'].$_GET['fileName'];
-				echo "File to delete: ".$outputFile."</br></br>";
-				//remove old zip
-				if (file_exists($outputFile)) {
-					echo '<div class="alert alert-success">Success: Deleted Old Archive</div>';
-					if(is_dir($outputFile)){
-						rrmdir($outputFile);
-					}
-					else{
-						unlink($outputFile);
-					}
+			//file path
+			$outputFile = "../".$_SESSION['zipDirectory'].$_GET['fileName'];
+			echo "File to delete: ".$outputFile."</br></br>";
+			//remove old zip
+			if (file_exists($outputFile)) {
+				echo '<div class="alert alert-success">Success: Deleted Old Archive</div>';
+				if(is_dir($outputFile)){
+					rrmdir($outputFile);
 				}
 				else{
-					echo '<div class="alert alert-error">Error: Unable to delete file</div>';
+					unlink($outputFile);
 				}
 			}
-			if($_GET['type']==="add"){
-				
+			else{
+				echo '<div class="alert alert-error">Error: Unable to delete file</div>';
 			}
 			?>
 		</div>
