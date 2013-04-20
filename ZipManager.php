@@ -89,7 +89,7 @@ if(!$_SESSION['logged']){
 		<form action="assets/AddFile.php" method="post">
 			<div class="form-horizontal">
 				<input type="text" name="newzip" placeholder="Filename.zip">
-				<button class="btn btn-success" type="submit" name="newzipButton">Add Zip File</button>
+				<button class="btn btn-success" type="submit" name="submit">Add Zip File</button>
 			</div>
 		</form>
 	</div>

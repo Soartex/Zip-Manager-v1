@@ -5,7 +5,7 @@ if(!$_SESSION['logged']){
     header("Location: ../index.php"); 
     exit; 
 } 
-if(!isset($_POST['submit'])){
+if(!(isset($_POST['submit']))){ 
 	header("Location: ../ZipManager.php");     
     exit; 
 }?>
