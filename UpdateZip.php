@@ -129,8 +129,13 @@ if(!isset($_GET['fileName'])){
 			<?php
 			//create folders
 			foreach ($pathsToMake as &$path) {
-				//change to zipdestination
-				mkdir($maintempDirectory."/".$path["path"], 0777,TRUE);
+                                //try to create dir.
+				try {
+                                //change to zipdestination
+                                mkdir($maintempDirectory."/".$path["path"], 0777,TRUE);
+                                } 
+                                //if it all ready exist do nothing.
+                                catch (Exception $e2) {}			
 			}
 	
 			//downlaod the files
